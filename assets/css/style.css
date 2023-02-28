@@ -1,5 +1,5 @@
 * {
-    box-sizing: content-box;
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
@@ -8,13 +8,31 @@
     background-color: beige;
  }
 
- main {
-    max-width: 100%;
- }
-
  header {
     text-align: center;
     height: 100px;
     padding-top: 25px;
     background-color: rgb(89, 143, 89);
+ }
+
+ .wrapper1 {
+    max-width: 100%;
+ }
+
+.user-input {
+    float: left;
+    border: solid;
+    width: 25%;
+ }
+
+.display-value { 
+    float: left;
+    border: solid;
+    width: 75%;
+ }
+
+ .display-value1 { 
+    float: left;
+    border: solid;
+    width: 75%;
  }
