@@ -1,5 +1,4 @@
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
@@ -10,29 +9,22 @@
 
  header {
     text-align: center;
-    height: 100px;
-    padding-top: 25px;
+    height: 150px;
     background-color: rgb(89, 143, 89);
  }
 
- .wrapper1 {
-    max-width: 100%;
+ main{
+   max-width: 100%;
  }
 
-.user-input {
-    float: left;
-    border: solid;
-    width: 25%;
+ .btn-success {
+   color: #fff;
+   background-color: #198754;
+   border-color: #198754;
  }
 
-.display-value { 
-    float: left;
-    border: solid;
-    width: 75%;
- }
-
- .display-value1 { 
-    float: left;
-    border: solid;
-    width: 75%;
+ .btn-success:hover {
+   color: #fff;
+   background-color: #157347;
+   border-color: #146c43;
  }
