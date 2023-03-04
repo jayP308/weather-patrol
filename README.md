@@ -7,8 +7,11 @@
 ## URL
 
 ## Screenshots
+Sample Desktop View
+<img src="./assets/images/sample-weather-view.png" />
 
 ## Credits
+Junnel R. Padilla, Bootcamp Modules, Stackoverflow, Jquery
 
 ## License
 MIT License
