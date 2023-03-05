@@ -74,7 +74,7 @@ for(let i=0; i < savedCities1.length; i++) {
         fetch(fiveDayUrl2)
         .then(res => res.json())
         .then(data1 => {
-           console.log(data1.list[5]);
+           console.log(data1);
         })
         .catch(error => console.log(error));
 
@@ -92,14 +92,14 @@ function renderCurrentWeather (data) {
     let weatherWind = data.wind.speed;
     let weatherHumid = data.main.humidity;
 
-    let weatherNameEl = document.createElement("h2");
-    weatherNameEl.textContent = weatherName + " " +"("+ todaysDate + ")";
-    cityName.appendChild(weatherNameEl);
-
     let weatherIconEl = document.createElement("img");
     weatherIconEl.className = "weather-info1"
     weatherIconEl.src = weatherPic;
     cityName.appendChild(weatherIconEl);
+
+    let weatherNameEl = document.createElement("h2");
+    weatherNameEl.textContent = weatherName + " " +"("+ todaysDate + ")";
+    cityName.appendChild(weatherNameEl);
 
     let weatherTempEl = document.createElement("p");
     weatherTempEl.className = "weather-info";
