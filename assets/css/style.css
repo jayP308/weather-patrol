@@ -17,6 +17,29 @@
    max-width: 100%;
  }
 
+ #city-display {
+  text-align: left;
+  padding: 4px;
+  margin: 10px;
+ }
+
+ .hover-effect {
+  background-color: beige;
+  padding: 10px;
+ }
+ 
+ .clear-button {
+  float: right;
+  padding: 5px;
+  font-size: 20px;
+  background-color: lightcoral;
+ }
+
+ .hover-effect:hover {
+   background-color: lightgrey;
+   cursor: pointer;
+ }
+
  .btn-success {
    color: #fff;
    background-color: #198754;
