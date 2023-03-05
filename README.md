@@ -8,7 +8,7 @@
 
 ## Screenshots
 Sample Desktop View
-<img src="./assets/images/sample-weather-view.png" />
+<img src="./assets/images/sample-weather-desktop.png" />
 
 ## Credits
 Junnel R. Padilla, Bootcamp Modules, Stackoverflow, Jquery
