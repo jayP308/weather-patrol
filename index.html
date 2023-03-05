@@ -11,25 +11,25 @@
 <body>
     <header>
         <h1>Weather Patrol</h1>
-        <h1>Date</h1>
+        <h1 id="date-display">Date</h1>
     </header>
 
     <main>
-            <section id="city-list" style=" width: 19%; height: 900px; float: left; margin-left: 10px; margin-top: 10px; border-right: solid;">
-                <h2 style="text-align: center;">Search City</h2>
+            <section id="city-list" style=" width: 19%; height: 900px; float: left; margin-left: 10px; margin-top: 10px; border-right: solid white; overflow: scroll;">
+                <h2 style="text-align: center; color: white;">Search City</h2>
                 <input style="width: 80%; margin-left: 30px" type="text" placeholder="ex. Tokyo" id="user-input"/>
-                <button id="submit-button" style="padding: 10px; font-family: monospace; margin-left: 20px; margin-top: 15px; background-color: rgb(89, 89, 202); color: yellow;">Submit</button>
+                <button id="submit-button" style="padding: 10px; font-family: monospace; margin-left: 20px; margin-top: 15px; background-color: rgb(68, 68, 253); color: yellow;">Submit</button>
                 <button id="clear-button" style="padding: 10px; font-family: monospace;">Clear Search History</button>
                 <h2 id="city-display"></h2>
             </section>
 
-                <h2 style="float: left; margin-left: 10px;">Today's Forecast</h2>
+                <h2 style="float: left; margin-left: 10px; color: white;">Today's Forecast</h2>
             <section>
                 <h2 class="city-name"></h2>
             </section>
 
             <div>
-                <h2 style="width: 78%; float: left; margin-left: 10px;">5 Days Forecast</h2>
+                <h2 style="float: left; margin-left: 10px; color: white;">5 Days Forecast</h2>
 
                 <section style="width: 79%; float: left; margin-left: 10px; margin-top: 10px;  background:linear-gradient(rgb(65, 126, 211), rgb(210, 219, 164));">
                     <h2>Coming Soon!</h2>

@@ -4,14 +4,16 @@
 }
 
  body {
-  background:linear-gradient(rgb(182, 190, 143), rgb(63, 63, 240));
+  background: url(../images/weather-bac.gif);
+  background-repeat: none;
+  background-size: cover;
  }
 
  header {
     text-align: center;
     height: 120px;
-    background:linear-gradient(rgb(116, 165, 234), rgb(210, 219, 164));
-    font-family: monospace;
+    border-bottom: solid;
+    color: white;
  }
 
  h1 {
@@ -30,13 +32,17 @@
 
  .hover-effect {
   text-align: center;
-  background:linear-gradient(rgb(65, 126, 211), rgb(210, 219, 164));
+  background:linear-gradient(rgb(192, 214, 237), rgb(210, 219, 164));
   padding: 10px;
+  font-family: monospace;
  }
 
- .hover-effect:hover {
-    background:linear-gradient(rgb(105, 59, 105), rgb(71, 67, 67));
+ .hover-effect:hover,
+ #submit-button:hover,
+ #clear-button:hover {
+    background:linear-gradient(rgb(139, 157, 177), rgb(151, 158, 118));
     cursor: pointer;
+    padding: 15px;
  }
 
  .weather-info {

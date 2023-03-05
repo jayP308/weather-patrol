@@ -4,13 +4,24 @@ let submitBtn = document.getElementById('submit-button');
 let userInput = document.getElementById('user-input');
 let clearBtn = document.getElementById('clear-button');
 let cityName = document.querySelector(".city-name");
+let todaysDate = document.getElementById('date-display');
 let savedCities1 = JSON.parse(localStorage.getItem("data")) || [];
+
+let d = new Date();
+let displayMonths = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+let displayDays = ["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 let currentWeatherData ='https://api.openweathermap.org/data/2.5/weather?q=';
 let currentWeather ='https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid=298a7fbb0e1f26ad78c570cfb48a026b';
 var fiveWeatherURL = "https://api.openweathermap.org/data/2.5/forecast?q=";
 let APIKey = '298a7fbb0e1f26ad78c570cfb48a026b';
+dateDisplay();
 
+function dateDisplay () {
+    let month = displayMonths[d.getMonth()];
+    let day = displayDays[d.getDay()];
+    document.getElementById("date-display").innerHTML = month + " " + d.getDate() + "," + " " + d.getFullYear() + " " + "-" + " " + day; 
+} 
 
 submitBtn.addEventListener("click", () => {
 
@@ -38,7 +49,7 @@ submitBtn.addEventListener("click", () => {
             clearBtn.addEventListener("click", function() {
                 localStorage.removeItem("data");
                 cityDisplay.textContent = " ";
-                cityInputEl.style.backgroundColor = "transparent";
+                cityDisplay.style.backgroundColor = "none";
             })
         }
     }
@@ -54,7 +65,8 @@ for(let i=0; i < savedCities1.length; i++) {
     clearBtn.addEventListener("click", function() {
         localStorage.removeItem("data");
         storeCity.textContent = " ";
-        storeCity.style.backgroundColor = "transparent";
+        cityDisplay.style.display = "none";
+        window.location.reload();
     })
 
     storeCity.addEventListener('click', () => {
