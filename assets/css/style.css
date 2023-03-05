@@ -33,6 +33,13 @@
    cursor: pointer;
  }
 
+ .weather-info {
+  font-size: 20px;
+ }
+ .weather-info1 {
+  width: 5%;
+ }
+
  .btn-success {
    color: #fff;
    background-color: #198754;
