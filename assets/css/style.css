@@ -26,8 +26,8 @@
  }
 
  #city-display {
-  padding: 4px;
-  margin: 10px;
+  padding: 10px;
+  
  }
 
  .hover-effect {
@@ -59,7 +59,16 @@
   float: left;
   margin-left: 10px;
   padding: 15px;
+ }
 
+ .city-name1,
+ .city-name2, .city-name3,
+ .city-name4, .city-name5 {
+  background:linear-gradient(rgb(65, 126, 211), rgb(210, 219, 164));
+  width: 79%;
+  float: left;
+  margin-left: 10px;
+  padding: 5px;
  }
 
  .btn-success {
