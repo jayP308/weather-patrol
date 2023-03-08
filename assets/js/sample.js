@@ -8,6 +8,7 @@ let cityName1 = document.querySelector(".city-name1");
 let cityName2 = document.querySelector(".city-name2");
 let cityName3 = document.querySelector(".city-name3");
 let cityName4 = document.querySelector(".city-name4");
+let cityName5 = document.querySelector(".city-name5");
 let todaysDate = document.getElementById('date-display');
 let savedCities1 = JSON.parse(localStorage.getItem("data")) || [];
 
@@ -93,7 +94,6 @@ for(let i=0; i < savedCities1.length; i++) {
         fetch(fiveDayUrl2)
         .then(res => res.json())
         .then(data1 => {
-            if(data1.list[i].dt_txt != (d.getDate() + 1))
             console.log(data1);
             renderFutureWeather(data1);
         })
@@ -140,12 +140,20 @@ function renderCurrentWeather (data) {
 
   function renderFutureWeather(data1) {
     // Render 1st future weather
+    console.log(data1);
     cityName1.innerHTML = " ";
     let date = new Date()
     let nextDay = (date.getMonth()+ 1) + "/" + (date.getDate() + 1) + "/" + date.getFullYear();
+    let weatherIcon = data1.list[0].weather[0].icon;
+    let weatherPic = 'https://openweathermap.org/img/wn/' + weatherIcon + '.png';
     let futureTemp = data1.list[0].main.temp_max;
     let futureWind = data1.list[0].wind.speed;
     let futureHumid = data1.list[0].main.humidity;
+
+    let weatherIconEl = document.createElement("img");
+    weatherIconEl.className = "weather-info1"
+    weatherIconEl.src = weatherPic;
+    cityName1.appendChild(weatherIconEl);
 
     let nextDayEl = document.createElement("h2");
     nextDayEl.textContent = nextDay;
@@ -169,9 +177,16 @@ function renderCurrentWeather (data) {
     // Renders 2nd future weather
     cityName2.innerHTML = " ";
     let nextDay1 = (date.getMonth()+ 1) + "/" + (date.getDate() + 2) + "/" + date.getFullYear();
+    let weatherIcon1 = data1.list[10].weather[0].icon;
+    let weatherPic1 = 'https://openweathermap.org/img/wn/' + weatherIcon1 + '.png';
     let futureTemp1 = data1.list[10].main.temp_max;
     let futureWind1 = data1.list[10].wind.speed;
     let futureHumid1= data1.list[10].main.humidity;
+
+    let weatherIconEl1 = document.createElement("img");
+    weatherIconEl1.className = "weather-info1"
+    weatherIconEl1.src = weatherPic1;
+    cityName2.appendChild(weatherIconEl1);
 
     let nextDayEl1 = document.createElement("h2");
     nextDayEl1.textContent = nextDay1;
@@ -196,9 +211,16 @@ function renderCurrentWeather (data) {
      // Renders 3rd future weather
      cityName3.innerHTML = " ";
      let nextDay2 = (date.getMonth()+ 1) + "/" + (date.getDate() + 3) + "/" + date.getFullYear();
+     let weatherIcon2 = data1.list[20].weather[0].icon;
+     let weatherPic2 = 'https://openweathermap.org/img/wn/' + weatherIcon2 + '.png';
      let futureTemp2 = data1.list[20].main.temp_max;
      let futureWind2 = data1.list[20].wind.speed;
      let futureHumid2= data1.list[20].main.humidity;
+
+     let weatherIconEl2 = document.createElement("img");
+     weatherIconEl2.className = "weather-info1"
+     weatherIconEl2.src = weatherPic2;
+     cityName3.appendChild(weatherIconEl2);
  
      let nextDayEl2 = document.createElement("h2");
      nextDayEl2.textContent = nextDay2;
@@ -223,9 +245,16 @@ function renderCurrentWeather (data) {
      // Renders 4th future weather
      cityName4.innerHTML = " ";
      let nextDay3 = (date.getMonth()+ 1) + "/" + (date.getDate() + 4) + "/" + date.getFullYear();
+     let weatherIcon3 = data1.list[30].weather[0].icon;
+     let weatherPic3 = 'https://openweathermap.org/img/wn/' + weatherIcon3 + '.png';
      let futureTemp3 = data1.list[30].main.temp_max;
      let futureWind3 = data1.list[30].wind.speed;
      let futureHumid3= data1.list[30].main.humidity;
+
+     let weatherIconEl3 = document.createElement("img");
+     weatherIconEl3.className = "weather-info1"
+     weatherIconEl3.src = weatherPic3;
+     cityName4.appendChild(weatherIconEl3);
  
      let nextDayEl3 = document.createElement("h2");
      nextDayEl3.textContent = nextDay3;
@@ -247,5 +276,38 @@ function renderCurrentWeather (data) {
      futureHumidEl3.className = "weather-info";
      cityName4.appendChild(futureHumidEl3);
 
-     
+     // Renders 5th future weather
+     cityName5.innerHTML = " ";
+     let nextDay4 = (date.getMonth()+ 1) + "/" + (date.getDate() + 5) + "/" + date.getFullYear();
+     let weatherIcon4 = data1.list[39].weather[0].icon;
+     let weatherPic4 = 'https://openweathermap.org/img/wn/' + weatherIcon4 + '.png';
+     let futureTemp4 = data1.list[39].main.temp_max;
+     let futureWind4 = data1.list[39].wind.speed;
+     let futureHumid4= data1.list[39].main.humidity;
+
+     let weatherIconEl4 = document.createElement("img");
+     weatherIconEl4.className = "weather-info1"
+     weatherIconEl4.src = weatherPic4;
+     cityName5.appendChild(weatherIconEl4);
+ 
+     let nextDayEl4 = document.createElement("h2");
+     nextDayEl4.textContent = nextDay4;
+     nextDayEl4.className = "wweather-info";
+     cityName5.appendChild(nextDayEl4);
+ 
+     let futureTempEl4 = document.createElement("p");
+     futureTempEl4.textContent = "Temperature:" + " " + futureTemp4 + " " + "℉";
+     futureTempEl4.className = "weather-info";
+     cityName5.appendChild(futureTempEl4);
+ 
+     let futureWindEl4 = document.createElement("p");
+     futureWindEl4.textContent = "Wind:" + " " + futureWind4 + " " + "MPH";
+     futureWindEl4.className = "weather-info";
+     cityName5.appendChild(futureWindEl4);
+ 
+     let futureHumidEl4 = document.createElement("p");
+     futureHumidEl4.textContent = "Humidity:" + " " + futureHumid4 + " " + "%";
+     futureHumidEl4.className = "weather-info";
+     cityName5.appendChild(futureHumidEl4);
+
   }
