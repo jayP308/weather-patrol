@@ -6,6 +6,7 @@ let clearBtn = document.getElementById('clear-button');
 let cityName = document.querySelector(".city-name");
 let cityName1 = document.querySelector(".city-name1");
 let cityName2 = document.querySelector(".city-name2");
+let cityName3 = document.querySelector(".city-name3");
 let todaysDate = document.getElementById('date-display');
 let savedCities1 = JSON.parse(localStorage.getItem("data")) || [];
 
@@ -137,7 +138,7 @@ function renderCurrentWeather (data) {
   }
 
   function renderFutureWeather(data1) {
-    console.log(data1);
+    // Render 1st future weather
     cityName1.innerHTML = " ";
     let date = new Date()
     let nextDay = (date.getMonth()+ 1) + "/" + (date.getDate() + 1) + "/" + date.getFullYear();
@@ -164,7 +165,7 @@ function renderCurrentWeather (data) {
     futureHumidEl.className = "weather-info";
     cityName1.appendChild(futureHumidEl)
 
-
+    // Renders 2nd future weather
     cityName2.innerHTML = " ";
     let nextDay1 = (date.getMonth()+ 1) + "/" + (date.getDate() + 2) + "/" + date.getFullYear();
     let futureTemp1 = data1.list[10].main.temp_max;
@@ -190,4 +191,31 @@ function renderCurrentWeather (data) {
     futureHumidEl1.textContent = "Humidity:" + " " + futureHumid1 + " " + "%";
     futureHumidEl1.className = "weather-info";
     cityName2.appendChild(futureHumidEl1);
+
+     // Renders 3rd future weather
+     cityName3.innerHTML = " ";
+     let nextDay2 = (date.getMonth()+ 1) + "/" + (date.getDate() + 3) + "/" + date.getFullYear();
+     let futureTemp2 = data1.list[20].main.temp_max;
+     let futureWind2 = data1.list[20].wind.speed;
+     let futureHumid2= data1.list[20].main.humidity;
+ 
+     let nextDayEl2 = document.createElement("h2");
+     nextDayEl2.textContent = nextDay2;
+     nextDayEl2.className = "wweather-info";
+     cityName3.appendChild(nextDayEl2);
+ 
+     let futureTempEl2 = document.createElement("p");
+     futureTempEl2.textContent = "Temperature:" + " " + futureTemp2 + " " + "℉";
+     futureTempEl2.className = "weather-info";
+     cityName3.appendChild(futureTempEl2);
+ 
+     let futureWindEl2 = document.createElement("p");
+     futureWindEl2.textContent = "Wind:" + " " + futureWind2 + " " + "MPH";
+     futureWindEl2.className = "weather-info";
+     cityName3.appendChild(futureWindEl2);
+ 
+     let futureHumidEl2 = document.createElement("p");
+     futureHumidEl2.textContent = "Humidity:" + " " + futureHumid2 + " " + "%";
+     futureHumidEl2.className = "weather-info";
+     cityName3.appendChild(futureHumidEl2);
   }
