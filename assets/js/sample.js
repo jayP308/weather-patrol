@@ -56,6 +56,31 @@ submitBtn.addEventListener("click", () => {
                 cityDisplay.textContent = " ";
                 cityDisplay.style.backgroundColor = "none";
             })
+            cityInputEl.addEventListener('click', () => {
+                let Url2 = currentWeatherData + cityInput + "&units=imperial" + '&appid=298a7fbb0e1f26ad78c570cfb48a026b';
+                let fiveDayUrl2 = fiveWeatherURL + cityInput + "&units=imperial" + '&appid=298a7fbb0e1f26ad78c570cfb48a026b';
+
+                fetch(Url2)
+                .then(res => res.json())
+                .then(data => {
+                if(data.name === cityInput ){
+                    userInput.value = "";
+                    renderCurrentWeather(data);
+                } else {
+                    storeCity.value = " ";
+                    return;
+                }
+                }) 
+                .catch(error => console.log(error));
+
+                fetch(fiveDayUrl2)
+                .then(res => res.json())
+                .then(data1 => {
+                    console.log(data1);
+                    renderFutureWeather(data1);
+                })
+                .catch(error => console.log(error));
+            })
         }
     }
     $('#user-input').val('');
