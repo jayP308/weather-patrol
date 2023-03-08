@@ -42,14 +42,37 @@ submitBtn.addEventListener("click", () => {
         })
         return;
     } else {
+        let Url2 = currentWeatherData + cityInput + "&units=imperial" + '&appid=298a7fbb0e1f26ad78c570cfb48a026b';
+        let fiveDayUrl2 = fiveWeatherURL + cityInput + "&units=imperial" + '&appid=298a7fbb0e1f26ad78c570cfb48a026b';
+
+        fetch(Url2)
+        .then(res => res.json())
+        .then(data => {
+        if(cityInput === data.name){
+            cityInput.value = "";
+            renderCurrentWeather(data);
+        } else if(cityInput != data.name){
+            return;
+        }
+        }) 
+        .catch(error => console.log(error));
+
+        fetch(fiveDayUrl2)
+        .then(res => res.json())
+        .then(data1 => {
+            console.log(data1);
+            renderFutureWeather(data1);
+        })
+        .catch(error => console.log(error));
+
         let cityInputEl = document.createElement("p");
         cityInputEl.className = "hover-effect";
         for (let i=0; i < cityInput.length; i++) {
             if(savedCities1.indexOf(cityInput) == -1){
                 savedCities1.push(cityInput)
-                cityDisplay.appendChild(cityInputEl);
                 cityInputEl.textContent = cityInput;
                 localStorage.setItem("data", JSON.stringify(savedCities1));
+                cityDisplay.appendChild(cityInputEl);
             }
             clearBtn.addEventListener("click", function() {
                 localStorage.removeItem("data");
@@ -63,7 +86,7 @@ submitBtn.addEventListener("click", () => {
                 fetch(Url2)
                 .then(res => res.json())
                 .then(data => {
-                if(data.name === cityInput ){
+                if(data.name === cityInput){
                     userInput.value = "";
                     renderCurrentWeather(data);
                 } else {
