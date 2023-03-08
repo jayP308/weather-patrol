@@ -7,6 +7,7 @@ let cityName = document.querySelector(".city-name");
 let cityName1 = document.querySelector(".city-name1");
 let cityName2 = document.querySelector(".city-name2");
 let cityName3 = document.querySelector(".city-name3");
+let cityName4 = document.querySelector(".city-name4");
 let todaysDate = document.getElementById('date-display');
 let savedCities1 = JSON.parse(localStorage.getItem("data")) || [];
 
@@ -218,4 +219,33 @@ function renderCurrentWeather (data) {
      futureHumidEl2.textContent = "Humidity:" + " " + futureHumid2 + " " + "%";
      futureHumidEl2.className = "weather-info";
      cityName3.appendChild(futureHumidEl2);
+
+     // Renders 4th future weather
+     cityName4.innerHTML = " ";
+     let nextDay3 = (date.getMonth()+ 1) + "/" + (date.getDate() + 4) + "/" + date.getFullYear();
+     let futureTemp3 = data1.list[30].main.temp_max;
+     let futureWind3 = data1.list[30].wind.speed;
+     let futureHumid3= data1.list[30].main.humidity;
+ 
+     let nextDayEl3 = document.createElement("h2");
+     nextDayEl3.textContent = nextDay3;
+     nextDayEl3.className = "wweather-info";
+     cityName4.appendChild(nextDayEl3);
+ 
+     let futureTempEl3 = document.createElement("p");
+     futureTempEl3.textContent = "Temperature:" + " " + futureTemp3 + " " + "℉";
+     futureTempEl3.className = "weather-info";
+     cityName4.appendChild(futureTempEl3);
+ 
+     let futureWindEl3 = document.createElement("p");
+     futureWindEl3.textContent = "Wind:" + " " + futureWind3 + " " + "MPH";
+     futureWindEl3.className = "weather-info";
+     cityName4.appendChild(futureWindEl3);
+ 
+     let futureHumidEl3 = document.createElement("p");
+     futureHumidEl3.textContent = "Humidity:" + " " + futureHumid3 + " " + "%";
+     futureHumidEl3.className = "weather-info";
+     cityName4.appendChild(futureHumidEl3);
+
+     
   }
