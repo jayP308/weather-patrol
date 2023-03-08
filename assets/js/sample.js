@@ -137,7 +137,7 @@ for(let i=0; i < savedCities1.length; i++) {
             userInput.value = "";
             renderCurrentWeather(data);
         } else {
-            savedCities1.innerHTML = " ";
+           return;
         }
         }) 
         .catch(error => console.log(error));
