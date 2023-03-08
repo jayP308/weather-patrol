@@ -51,8 +51,15 @@ submitBtn.addEventListener("click", () => {
         if(cityInput === data.name){
             cityInput.value = "";
             renderCurrentWeather(data);
-        } else if(cityInput != data.name){
-            return;
+        } else {
+            swal({
+                title: 'City Does Not Exist!',
+                icon: 'error',
+                text: " ",
+                button: false,
+                timer: 1500
+            })
+             return;
         }
         }) 
         .catch(error => console.log(error));
@@ -89,10 +96,7 @@ submitBtn.addEventListener("click", () => {
                 if(data.name === cityInput){
                     userInput.value = "";
                     renderCurrentWeather(data);
-                } else {
-                    storeCity.value = " ";
-                    return;
-                }
+                } 
                 }) 
                 .catch(error => console.log(error));
 
@@ -129,12 +133,11 @@ for(let i=0; i < savedCities1.length; i++) {
         fetch(Url2)
         .then(res => res.json())
         .then(data => {
-        if(data.name === savedCities1[i] ){
+        if(savedCities1[i] === data.name){
             userInput.value = "";
             renderCurrentWeather(data);
         } else {
-            storeCity.value = " ";
-            return;
+            savedCities1.innerHTML = " ";
         }
         }) 
         .catch(error => console.log(error));
