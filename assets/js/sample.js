@@ -124,15 +124,24 @@ submitBtn.addEventListener("click", () => {
                 fetch(Url2)
                 .then(res => res.json())
                 .then(data => {
+                if(cityInputEl === data.name){
                     userInput.value = "";
                     renderCurrentWeather(data);
-                }) 
+                } else { 
+                    swal({
+                    title: 'Not Found',
+                    icon: 'error',
+                    text: ' ',
+                    button: "Try Again!"
+                    
+                })
+            }
+                })
                 .catch(error => console.log(error));
 
                 fetch(fiveDayUrl2)
                 .then(res => res.json())
                 .then(data1 => {
-                    console.log(data1);
                     renderFutureWeather(data1);
                 })
                 .catch(error => console.log(error));
@@ -167,6 +176,13 @@ for(let i = 0; i < savedCities1.length; i++){
                     userInput.value = "";
                     renderCurrentWeather(data);
                 } else {
+                    swal({
+                        title: 'Not Found',
+                        icon: 'error',
+                        text: ' ',
+                        button: "Try Again!"
+                        
+                    })
                     storeCity.innerHTML = "Not Found";
                     storeCity.className = "hover-effect2";
                 }
