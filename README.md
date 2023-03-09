@@ -1,9 +1,11 @@
 # Weather-Patrol
 
 ## Usage
+Are you curious whats the weather gonna be like? Or just curious whats the weather gonna be like today or 5 days from now? This app serves a purpose to tell user what the weather is for preparation purposes or just curious what the weather is gonna be like.
 
 ## Description
-
+This app includes search history located in the left of the screen to save user searches and information persist when page is refreshed. This will display current day weather depending on cities that the user are searching for. It will also display 5 days weather prediction and today's date under the title that will change as the day go by. It is case sensitive and gave a warning every time the page loads for the first letter of user searches to be capitalize. 
+ 
 ## URL
 https://jayp308.github.io/weather-patrol/
 
