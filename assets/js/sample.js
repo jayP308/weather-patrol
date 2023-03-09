@@ -21,6 +21,7 @@ let currentWeather ='https://api.openweathermap.org/data/2.5/weather?lat={lat}&l
 var fiveWeatherURL = "https://api.openweathermap.org/data/2.5/forecast?q=";
 let APIKey = '298a7fbb0e1f26ad78c570cfb48a026b';
 
+// When page loads up, case sensitivity message pops up
 $(document).ready(function() {
     dateDisplay();
     swal({
@@ -48,6 +49,7 @@ $(document).ready(function() {
     .catch(error => console.log(error));
 });
 
+// function to display today's date under header title
 function dateDisplay () {
     let month = displayMonths[d.getMonth()];
     let day = displayDays[d.getDay()];
@@ -143,7 +145,7 @@ submitBtn.addEventListener("click", () => {
     $('#user-input').val('');
 });
 
-    
+// Stores and display information from local storage to search history   
 for(let i = 0; i < savedCities1.length; i++){
     let storeCity = document.createElement('h2');
     storeCity.textContent = savedCities1[i];
