@@ -20,7 +20,33 @@ let currentWeatherData ='https://api.openweathermap.org/data/2.5/weather?q=';
 let currentWeather ='https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid=298a7fbb0e1f26ad78c570cfb48a026b';
 var fiveWeatherURL = "https://api.openweathermap.org/data/2.5/forecast?q=";
 let APIKey = '298a7fbb0e1f26ad78c570cfb48a026b';
-dateDisplay();
+
+$(document).ready(function() {
+    dateDisplay();
+    swal({
+        title: "Case Sensitive!", 
+        icon: 'warning', 
+        text: "First Letter Should Be Capitalized When Searching",
+        button: "Proceed"
+    })
+
+    let Url2 = currentWeatherData + savedCities1 + "&units=imperial" + '&appid=298a7fbb0e1f26ad78c570cfb48a026b';
+    let fiveDayUrl2 = fiveWeatherURL + savedCities1 + "&units=imperial" + '&appid=298a7fbb0e1f26ad78c570cfb48a026b';
+
+    fetch(Url2)
+    .then(res => res.json())
+    .then(data => {
+        renderCurrentWeather(data);
+    }) 
+    .catch(error => console.log(error));
+
+    fetch(fiveDayUrl2)
+    .then(res => res.json())
+    .then(data1 => {
+        renderFutureWeather(data1);
+    })
+    .catch(error => console.log(error));
+});
 
 function dateDisplay () {
     let month = displayMonths[d.getMonth()];
@@ -52,14 +78,16 @@ submitBtn.addEventListener("click", () => {
             cityInput.value = "";
             renderCurrentWeather(data);
         } else {
+            cityInputEl.innerHTML = "Not Found!";
+            cityInputEl.className = "hover-effect2";
+            cityInputEl.style.cursor = "pointer";
             swal({
-                title: 'City Does Not Exist!',
+                title: cityInput,
                 icon: 'error',
-                text: " ",
-                button: false,
-                timer: 1500
+                text: 'City Not Found!',
+                button: "Try Again!"
+                
             })
-             return;
         }
         }) 
         .catch(error => console.log(error));
@@ -80,11 +108,14 @@ submitBtn.addEventListener("click", () => {
                 cityInputEl.textContent = cityInput;
                 localStorage.setItem("data", JSON.stringify(savedCities1));
                 cityDisplay.appendChild(cityInputEl);
+            } else { 
+                return;
             }
             clearBtn.addEventListener("click", function() {
-                localStorage.removeItem("data");
+                localStorage.clear("data");
                 cityDisplay.textContent = " ";
                 cityDisplay.style.backgroundColor = "none";
+                window.location.reload();
             })
             cityInputEl.addEventListener('click', () => {
                 let Url2 = currentWeatherData + cityInput + "&units=imperial" + '&appid=298a7fbb0e1f26ad78c570cfb48a026b';
@@ -93,10 +124,8 @@ submitBtn.addEventListener("click", () => {
                 fetch(Url2)
                 .then(res => res.json())
                 .then(data => {
-                if(data.name === cityInput){
                     userInput.value = "";
                     renderCurrentWeather(data);
-                } 
                 }) 
                 .catch(error => console.log(error));
 
@@ -113,12 +142,13 @@ submitBtn.addEventListener("click", () => {
     $('#user-input').val('');
 });
 
-for(let i=0; i < savedCities1.length; i++) {
-    let storeCity = document.createElement("p");
+    
+for(let i = 0; i < savedCities1.length; i++){
+    let storeCity = document.createElement('h2');
     storeCity.textContent = savedCities1[i];
     storeCity.className = "hover-effect";
     cityDisplay.appendChild(storeCity);
-
+   
     clearBtn.addEventListener("click", function() {
         localStorage.removeItem("data");
         storeCity.textContent = " ";
@@ -126,32 +156,33 @@ for(let i=0; i < savedCities1.length; i++) {
         window.location.reload();
     })
 
-    storeCity.addEventListener('click', () => {
+    storeCity.addEventListener("click", () => {
         let Url2 = currentWeatherData + savedCities1[i] + "&units=imperial" + '&appid=298a7fbb0e1f26ad78c570cfb48a026b';
         let fiveDayUrl2 = fiveWeatherURL + savedCities1[i] + "&units=imperial" + '&appid=298a7fbb0e1f26ad78c570cfb48a026b';
-
-        fetch(Url2)
-        .then(res => res.json())
-        .then(data => {
-        if(savedCities1[i] === data.name){
-            userInput.value = "";
-            renderCurrentWeather(data);
-        } else {
-           return;
-        }
-        }) 
-        .catch(error => console.log(error));
-
-        fetch(fiveDayUrl2)
-        .then(res => res.json())
-        .then(data1 => {
-            console.log(data1);
-            renderFutureWeather(data1);
-        })
-        .catch(error => console.log(error));
-
-        })
+        
+                fetch(Url2)
+                .then(res => res.json())
+                .then(data => {
+                if(savedCities1[i] === data.name){
+                    userInput.value = "";
+                    renderCurrentWeather(data);
+                } else {
+                    storeCity.innerHTML = "Not Found";
+                    storeCity.className = "hover-effect2";
+                }
+                }) 
+                .catch(error => console.log(error));
+    
+                fetch(fiveDayUrl2)
+                .then(res => res.json())
+                .then(data1 => {
+                    console.log(data1);
+                    renderFutureWeather(data1);
+                })
+                .catch(error => console.log(error));
+    })
 }
+    
 
 function renderCurrentWeather (data) {
     cityName.innerHTML = " ";
