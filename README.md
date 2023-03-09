@@ -5,13 +5,13 @@ Are you curious whats the weather gonna be like? Or just curious whats the weath
 
 ## Description
 This app includes search history located in the left of the screen to save user searches and information persist when page is refreshed. This will display current day weather depending on cities that the user are searching for. It will also display 5 days weather prediction and today's date under the title that will change as the day go by. It is case sensitive and gave a warning every time the page loads for the first letter of user searches to be capitalize. 
- 
+
 ## URL
 https://jayp308.github.io/weather-patrol/
 
 ## Screenshots
 Sample Desktop View
-<img src="./assets/images/sample-weather-desktop.png" />
+<img src="./assets/images/weather-desktop-display.png" />
 
 ## Credits
 Junnel R. Padilla, Bootcamp Modules, Stackoverflow, Jquery

@@ -127,15 +127,7 @@ submitBtn.addEventListener("click", () => {
                 if(cityInputEl === data.name){
                     userInput.value = "";
                     renderCurrentWeather(data);
-                } else { 
-                    swal({
-                    title: 'Not Found',
-                    icon: 'error',
-                    text: ' ',
-                    button: "Try Again!"
-                    
-                })
-            }
+                }  
                 })
                 .catch(error => console.log(error));
 
